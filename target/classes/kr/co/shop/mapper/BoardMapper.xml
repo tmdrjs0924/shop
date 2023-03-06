@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.shop.mapper.BoardMapper">
+	<insert id="write_ok" parameterType="kr.co.shop.vo.BoardVo">
+		insert into board(memberId,title,content,sort,bimil,bimg,writeday) values(#{memberId},#{title},#{content},#{sort},#{bimil},#{bimg},now())
+	</insert>
+	
+	<select id="list" resultType="kr.co.shop.vo.BoardVo">
+		select * from board order by id desc limit #{param1},#{param2}
+	</select>
+	
+	<select id="update" parameterType="kr.co.shop.vo.BoardVo" resultType="kr.co.shop.vo.BoardVo">
+		select * from board where id=#{id}
+	</select>
+	
+	<update id="update_ok" parameterType="kr.co.shop.vo.BoardVo">
+		update board set sort=#{sort},title=#{title},content=#{content},bimil=#{bimil},bimg=#{bimg} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="kr.co.shop.vo.BoardVo">
+		delete from board where id=#{id}
+	</delete>
+	
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/#{param}) from board
+	</select>
+</mapper>
