@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/views/common">
+ <!-- 제외할 패턴 -->
+ <excludes>
+	<pattern> /board/write </pattern>
+	<pattern> /board/list </pattern>
+	<pattern> /board/update* </pattern>
+ </excludes>
+ <!-- 기본 패턴 -->
+ <decorator name="default" page="default.jsp">
+  <pattern>*</pattern> 
+ </decorator>
+ 
+  <!-- 관리자 패턴 -->
+ <decorator name="admin" page="admin.jsp">
+  <pattern>/admin/*</pattern> 
+ </decorator>
+ 
+ <!-- 모바일 패턴 -->
+ <decorator name="mobileDefault" page="mobileDefault.jsp">
+  <pattern>/m.*.do</pattern> 
+ </decorator>
+</decorators>
+
+ 

@@ -1,0 +1,121 @@
+package kr.co.shop.controller;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.co.shop.service.AdminService;
+import kr.co.shop.vo.Cate1Vo;
+import kr.co.shop.vo.Cate2Vo;
+import kr.co.shop.vo.Cate3Vo;
+import kr.co.shop.vo.Criteria;
+import kr.co.shop.vo.ProductVo;
+
+@Controller
+public class AdminController {
+	
+	@Autowired
+	@Qualifier("as")
+	private AdminService service;
+	
+	//메인 페이지
+	@RequestMapping("/admin/main")
+	public String main() {
+		return "/admin/main";
+	}
+	
+	//카테고리 페이지
+	@RequestMapping("/admin/category")
+	public String category(Model model) {
+		return service.category(model);
+	}
+	
+	//상품목록 페이지
+	@RequestMapping("/admin/productList")
+	public String productList(Criteria cri, Model model) {
+		return service.productList(cri, model);
+	}
+	
+	//상품등록페이지
+	@RequestMapping("/admin/product")
+	public String product(Model model) {
+		return service.product(model);
+	}
+	
+	//상품등록실행
+	@RequestMapping("/admin/productInsertAction")
+	public String productInsertAction(HttpServletRequest request) throws Exception {
+		return service.productInsertAction(request);
+	}
+	
+	//상품 정보 
+	@GetMapping("/admin/productDetail")
+	public String productDetail(HttpServletRequest request, Model model) {
+		return service.productDetail(request,model);
+	}
+	
+	@RequestMapping("/admin/productModify")
+	public String productModify(HttpServletRequest request, ProductVo pvo) throws Exception {
+		return service.productModify(request, pvo);
+	}
+	//상품삭제
+	@RequestMapping("/admin/productDelete")
+	public String productDelete(HttpServletRequest request) {
+		return service.productDelete(request);
+	}
+	
+	//판매함
+	@RequestMapping("/admin/productOn")
+	public String productOn(HttpServletRequest request) {
+		return service.productOn(request);
+	}
+	//판매중지
+	@RequestMapping("/admin/productOff")
+	public String productOff(HttpServletRequest request) {
+		return service.productOff(request);
+	}
+	
+	//중분류 가져오기
+	@RequestMapping("/admin/getcate2")
+	public void getCate2(HttpServletRequest request, PrintWriter out) {
+		service.getCate2(request, out);
+	}
+	
+	//소분류 가져오기
+	@RequestMapping("/admin/getcate3")
+	public void getCate3(HttpServletRequest request, PrintWriter out) {
+		service.getCate3(request, out);
+	}
+	//상품코드
+	@RequestMapping("/admin/getpcode")
+	public void getPcode(HttpServletRequest request, PrintWriter out) {
+		service.getPcode(request, out);
+	}
+	
+	//대분류 등록
+	@RequestMapping("/admin/cate1_insert")
+	public String cate1_insert(Cate1Vo c1vo) {
+		return service.cate1_insert(c1vo);
+	}
+	
+	//중분류 등록
+	@RequestMapping("/admin/cate2_insert")
+	public String cate2_insert(Cate2Vo c2vo) {
+		return service.cate2_insert(c2vo);
+	}
+	
+	//소분류 등록
+	@RequestMapping("/admin/cate3_insert")
+	public String cate3_insert(Cate3Vo c3vo) {
+		return service.cate3_insert(c3vo);
+	}
+	
+	
+	
+}
