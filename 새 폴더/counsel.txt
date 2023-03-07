@@ -1,0 +1,7 @@
+create table counsel(
+id int auto_increment primary key,
+userid varchar(20),
+content text,
+state int,
+answer text
+writeday date);
