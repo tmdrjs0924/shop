@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.shop.mapper.AdminMapper">
+	<select id="getCate1" resultType="kr.co.shop.vo.Cate1Vo">
+		select * from cate1 order by id asc
+	</select>
+	<select id="getCate2" resultType="kr.co.shop.vo.Cate2Vo">
+		select * from cate2 where cate1Code=#{param} order by id asc
+	</select>
+	<select id="getCate3" resultType="kr.co.shop.vo.Cate3Vo">
+		select * from cate3 where cate2Code=#{param}order by id asc
+	</select>
+	
+	<insert id="cate1_insert" parameterType="kr.co.shop.vo.Cate1Vo">
+		insert into cate1(cate1Name, cate1Id) values(#{cate1Name},#{cate1Id})
+	</insert>
+	<insert id="cate2_insert" parameterType="kr.co.shop.vo.Cate2Vo">
+		insert into cate2(cate2Name, cate2Id, cate1Code) values(#{cate2Name},#{cate2Id},#{cate1Code})
+	</insert>
+
+	<insert id="cate3_insert" parameterType="kr.co.shop.vo.Cate3Vo">
+		insert into cate3(cate3Name, cate3Id, cate2Code) values(#{cate3Name},#{cate3Id},#{cate2Code})
+	</insert>
+	
+	<select id="getPcode" resultType="int">
+    select ifnull( max( right(pCode,3) ) , 0 )+1 from product
+    where pCode like concat(#{param},'%')
+  </select>
+  
+  <insert id="productInsertAction" parameterType="kr.co.shop.vo.ProductVo">
+  	insert into product(pCode,pName,pSize,pPrice,pState,pImg1,pImg2,pImg3,pDc,pMile,pInven,pReg)
+  	values(#{pCode},#{pName},#{pSize},#{pPrice},#{pState},#{pImg1},#{pImg2},#{pImg3},#{pDc},#{pMile},#{pInven},now())
+  </insert>
+  
+  <!-- 상품리스트 -->
+	<select id="productList" resultType="kr.co.shop.vo.ProductVo">
+		select id, pCode, pName, pImg1, pState, pPrice, pDc 
+		from product
+		<if test="keyword != null">
+			where pName like concat ('%', #{keyword}, '%')
+		</if>
+		order by id desc
+		limit #{skip}, #{amount} 
+		
+	</select>
+	
+	<!-- 상품 총 갯수 -->
+	<select id="productTotal" resultType="int">
+		select count(*) from product
+		<if test="keyword != null">
+			where pName like concat ('%', #{keyword}, '%')
+		</if>
+	</select>
+	<!-- 판매중 상품 총 갯수 -->
+	<select id="productTotal2" resultType="int">
+		select count(*) from product
+		<if test="keyword != null">
+			where pName like concat ('%', #{keyword}, '%') and pState=0
+		</if>
+		<if test="keyword == null">
+			where pState=0
+		</if>
+	</select>
+		<!-- 판매안함 상품 총 갯수 -->
+	<select id="productTotal3" resultType="int">
+		select count(*) from product
+		<if test="keyword != null">
+			where pName like concat ('%', #{keyword}, '%') and pState=1
+		</if>
+		<if test="keyword == null">
+			where pState=1
+		</if>	
+	</select>
+	
+	<!-- 상품 삭제 -->
+	<delete id ="productDelete">
+		delete from product where id = #{param}
+	</delete>
+	
+	<!-- 상품 판매중 -->
+	<update id ="productOn">
+		update product set pState=0 where id = #{param}
+	</update>
+	
+	<!-- 상품 판매중지 -->
+	<update id ="productOff">
+		update product set pState=1 where id = #{param}
+	</update>
+	
+	<!-- 상품 정보 -->
+	<select id="productDetail" resultType="kr.co.shop.vo.ProductVo">
+		select * from product where id=#{param}
+	</select>
+	
+	<!-- 상품수정 -->
+	<update id="productModify" parameterType="kr.co.shop.vo.ProductVo">
+		update product set pState=#{pState}, pName=#{pName}, pPrice=#{pPrice}, pDc=#{pDc}, pMile=#{pMile},
+		pInven=#{pInven}, pSize=#{pSize}, pImg1=#{pImg1}, pImg2=#{pImg2}, pImg3=#{pImg3}
+		where pCode=#{pCode}
+	</update>
+</mapper>
