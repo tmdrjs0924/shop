@@ -174,16 +174,46 @@
 		select * from board order by id desc
 	</select>
 
-	<!-- 게시판관목록-->
+	<!-- 게시글목록-->
 	<select id="boardList" resultType="kr.co.shop.vo.BoardVo">
 		SELECT b.userid, b.pCode, b.title, b.sort, b.bimil, b.state, b.writeday, p.pName, b.answer, b.content, b.id
 		FROM board as b
 		INNER JOIN product as p
-		ON b.pCode = p.pCode;
+		ON b.pCode = p.pCode
+		ORDER BY state ASC, id ASC
+		limit #{skip}, #{amount}
 	</select>
 	
-	<!-- 게시판 답변 -->
+	<!-- 게시글총  총건갯수 -->
+	<select id="boardTotal" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<!-- 게시글 답변 -->
 	<update id="boardAction" parameterType="kr.co.shop.vo.BoardVo">
 		update board set state=1, answer=#{answer} where id=#{id}	
 	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="boardDelete">
+		delete from board where id=#{param}
+	</delete>
+	
+	<!-- 1대1목록 -->
+	<select id="counselList"  resultType="kr.co.shop.vo.CounselVo">
+		select * from counsel
+		ORDER BY state ASC, id ASC
+		limit #{skip}, #{amount}
+	</select>
+	
+	<!-- 1대1  총건갯수 -->
+	<select id="counselTotal" resultType="int">
+		select count(*) from counsel
+	</select>
+	
+	<!--1:1 삭제 -->
+	<delete id="counselDelete">
+		delete from counsel where id=#{param}
+	</delete>
+	
 </mapper>

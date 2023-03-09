@@ -2,9 +2,16 @@ package kr.co.shop.vo;
 
 public class JusoVo {
 	
-	private int id;
+	private int id,state;
+	
 	private String userid,name,zip,juso,juso_etc,phone;
 	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getId() {
 		return id;
 	}

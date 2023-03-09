@@ -141,16 +141,34 @@ public class AdminController {
 		return service.board(model);
 	}
 	
-	//게시판 목록
+	//게시글 목록
 	@RequestMapping("/admin/boardList")
-	public String boardList(Model model) {
-		return service.boardList(model);
+	public String boardList(Model model, Criteria cri) {
+		return service.boardList(model, cri);
 	}
 	
-	//게시판 답변
+	//게시글 답변
 	@RequestMapping("/admin/boardAction")
 	public String boardAction(BoardVo bvo) {
 		return service.boardAction(bvo);
+	}
+	
+	//게시글 삭제
+	@RequestMapping("/admin/boardDelete") 
+	public String boardDelete(HttpServletRequest request) {
+		return service.boardDelete(request);
+	}
+	
+	//1대1문의 목록
+	@RequestMapping("/admin/counselList")
+	public String counselList(Model model, Criteria cri) {
+		return service.counselList(model,cri);
+	}
+	
+	//1대1ㅣ삭제
+	@RequestMapping("/admin/counselDelete") 
+	public String counselDelete(HttpServletRequest request) {
+		return service.counselDelete(request);
 	}
 	
 }

@@ -39,7 +39,6 @@ public class OrderServiceImpl implements OrderService {
 		String[] orderAmount = ovo.getTotal_amount().split(",");
 		String[] orderSize = ovo.getTotal_size().split(",");
 		
-		
 		//사이즈, 수량 리스트로 보내줌
 		ArrayList<OrderVo> olist = new ArrayList<OrderVo>();
 		for(int i=0;i<orderCode.length;i++)

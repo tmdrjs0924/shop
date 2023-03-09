@@ -8,6 +8,7 @@ import kr.co.shop.vo.BoardVo;
 import kr.co.shop.vo.Cate1Vo;
 import kr.co.shop.vo.Cate2Vo;
 import kr.co.shop.vo.Cate3Vo;
+import kr.co.shop.vo.CounselVo;
 import kr.co.shop.vo.Criteria;
 import kr.co.shop.vo.OrderVo;
 import kr.co.shop.vo.ProductVo;
@@ -92,9 +93,24 @@ public interface AdminMapper {
 	//게시판 관리
 	public ArrayList<BoardVo> board();
 
-	//게시판 목록
-	public ArrayList<BoardVo> boardList();
+	//게시글 목록
+	public ArrayList<BoardVo> boardList(Criteria cri);
 	
-	//게시판 답변
+	//게시판총건수
+	public int boardTotal(Criteria cri);
+	
+	//게시글 답변
 	public void boardAction(BoardVo bvo);
+	
+	//게시글 삭제
+	public void boardDelete(String id);
+	
+	//1대1목록
+	public ArrayList<CounselVo> counselList(Criteria cri);
+	
+	//1대1 총건수
+	public int counselTotal(Criteria cri);
+	
+	//1대1 삭제
+	public void counselDelete(String id);
 }

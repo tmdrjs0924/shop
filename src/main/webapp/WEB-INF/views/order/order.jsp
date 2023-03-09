@@ -186,7 +186,7 @@ display: none;
 
 
 function pointCheck(my) {
-	if(my > ${mvo.point }) {
+	if(my > ${mvo.point}) {
 		alert('보유중인 최대 포인트를 초과할수 없습니다.');
 		document.querySelector('#usePoint').value = ${mvo.point };
 	}

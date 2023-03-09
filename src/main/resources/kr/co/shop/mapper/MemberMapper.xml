@@ -71,7 +71,7 @@
     values(#{userid},#{name},#{juso},#{juso_etc},#{zip},#{phone})
   </update>
   
-  <select id="juso_list" resultType="kr.co.shop.vo.JusoVo">
+  <select id="juso_list" parameterType="kr.co.shop.vo.JusoVo" resultType="kr.co.shop.vo.JusoVo">
       select * from juso where userid=#{param}
   </select>
   
@@ -82,5 +82,13 @@
   <select id="getChong" resultType="int">
     select ceil(count(*)/#{param}) from juso
   </select>
+  
+  <update id="juso_gibon">
+    update juso set state=1 where id=#{param}
+  </update>
+  
+  <update id="juso_gibonoff">
+    update juso set state=0 where id=#{param}
+  </update>
   
   </mapper>

@@ -218,4 +218,16 @@ public class MemberController {
 		
 		return memberservice.juso_delete(request);
 	}
+	
+	@RequestMapping("/member/juso_gibon")
+	public String juso_gibon(HttpServletRequest request) {
+		
+		return memberservice.juso_gibon(request);
+	}
+	
+	@RequestMapping("/member/juso_gibonoff")
+	public String juso_gibonoff(HttpServletRequest request) {
+		
+		return memberservice.juso_gibonoff(request);
+	}
 }

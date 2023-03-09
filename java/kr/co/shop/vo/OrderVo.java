@@ -33,8 +33,6 @@ public class OrderVo {
 	//추가2 (주문상태)
 	private int orderState;
 	
-	
-	
 	public int getOrderState() {
 		return orderState;
 	}

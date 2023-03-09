@@ -49,4 +49,8 @@ public interface MemberMapper {
     public int getChong(int rnum);
     
     public void juso_delete(String id);
+    
+    public void juso_gibon(String id);
+    
+    public void juso_gibonoff(String id);
 }

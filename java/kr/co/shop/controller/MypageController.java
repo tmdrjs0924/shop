@@ -11,28 +11,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.shop.service.CounselService;
+import kr.co.shop.service.MypageService;
 import kr.co.shop.vo.CounselVo;
 
 @Controller
-public class CounselController {
+public class MypageController {
 
 	@Autowired
 	@Qualifier("cm")
-	private CounselService service;
+	private MypageService service;
 	
 	@RequestMapping("/mypage/counsel_input")
 	public void counsel_input(HttpSession session, CounselVo cvo, PrintWriter out, Model model) {
-		service.counsel_input(session, cvo, out, model);;
+		service.counsel_input(session, cvo, out, model);
 	}
 	
-	@RequestMapping("/mypage/counsel_list")
-	public String counsel_list(Model model, HttpServletRequest request) {
-		return service.counsel_list(model, request);
+	@RequestMapping("/mypage/order_history")
+	public String order_history(HttpSession session, Model model) {
+		return service.order_history(session, model);
 	}
 	
-	@RequestMapping("/mypage/counsel_update")
-	public String counsel_update(CounselVo cvo) {
-		return service.counsel_update(cvo);
+	@RequestMapping("/mypage/state_change")
+	public String state_change(HttpServletRequest request) {
+		return service.state_change(request);
 	}
 }

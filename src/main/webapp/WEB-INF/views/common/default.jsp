@@ -93,16 +93,6 @@
 	</style>
 	<script>
 		$(function(){
-			// 스크롤 위치를 세션 스토리지에 저장
-			window.addEventListener('scroll', function() {
-			  sessionStorage.setItem('scrollPosition', window.scrollY);
-			});
-			// 세션 스토리지에 저장된 스크롤 위치를 불러옴
-			var scrollPosition = sessionStorage.getItem('scrollPosition');
-			// 스크롤 위치를 조정
-			if (scrollPosition !== null) {
-			  window.scrollTo(0, scrollPosition);
-			}
 			$("#counsel_form #close").click(function(){
 				$("#counsel_form").css("display","none");
 			});

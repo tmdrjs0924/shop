@@ -76,4 +76,8 @@ public interface MemberService {
     
     public String juso_delete(HttpServletRequest request);
     
+    public String juso_gibon(HttpServletRequest request);
+    
+    public String juso_gibonoff(HttpServletRequest request);
+    
 }

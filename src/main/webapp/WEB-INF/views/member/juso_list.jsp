@@ -11,10 +11,12 @@
    
    section {
       width:1000px;
-      height:600px;
       margin:auto;
       text-align:center;
       padding-top:50px;
+   }
+   section div {
+      margin-bottom:100px;
    }
    section table {
      border-spacing:0px;
@@ -29,11 +31,12 @@
     }
     section table tr:last-child td {
       border-bottom:2px solid #747474;
+      
     }
    section th {
-     font-size:14px;
+      font-size:14px;
       height:30px;
-      border-top:2px solid #eeeeee;
+      border-top:2px solid #747474;
    }
    section #edit {
       display:inline-block;
@@ -108,7 +111,33 @@
       padding-top:40px;
       padding-left:30px;
       margin-left:-60px;
-      color:red;
+      color:#747474;
+      cursor:pointer;
+    }
+    section #jgb {
+      display:inline-block;
+      width:100px;
+      height:100px;
+      border-left:1px dashed #747474;
+      text-align:center;
+      margin-top:-30px;
+      padding-top:32px;
+      padding-left:20px;
+      margin-left:-60px;
+      color:black;
+      cursor:pointer;
+    }
+    section #jgb:hover {
+      display:inline-block;
+      width:100px;
+      height:100px;
+      border-left:1px dashed #747474;
+      text-align:center;
+      margin-top:-30px;
+      padding-top:32px;
+      padding-left:20px;
+      margin-left:-60px;
+      color:#747474;
       cursor:pointer;
     }
  </style>
@@ -201,13 +230,53 @@
          <td> ${jvo.zip} </td>
          <td> ${jvo.juso} ${jvo.juso_etc} </td>
          <td> ${jvo.phone} </td>
-         <td> <span id="jdel" onclick="location='juso_delete?id=${jvo.id}'"> 삭제 </span>
+         <c:if test="${jvo.state==0}">
+         <td width="170">
+             <span id="jgb" onclick="location='juso_gibon?id=${jvo.id}'"> 기본배송지 등록 </span>
+         </td>
+         <td> <span id="jdel" onclick="location='juso_delete?id=${jvo.id}'"> 삭제 </span> </td>
+         </c:if>
+         <c:if test="${jvo.state==1}">
+         <td width="170">
+             <span id="jgb" onclick="location='juso_gibonoff?id=${jvo.id}'"> 기본배송지 해제 </span>
+         </td>
+         <td> <span id="jdel" onclick="location='juso_delete?id=${jvo.id}'"> 삭제 </span> </td>
+         </c:if>
        </tr>
       </c:forEach>
      </table>
+     
+     <table width="900" align="center" style="margin-top:50px;">
+       <caption style="font-size:25px;"> <h3> 기 본 배 송 지 </h3></caption>
+       <tr align="center">
+         <th> 아이디 </th>
+         <th> 이름 </th>
+         <th> 우편번호 </th>
+         <th> 주소 </th>
+         <th> 전화번호 </th>
+         <th> </th>
+         <th> </th>
+       </tr>
+       
+     <c:forEach items="${jlist}" var="jvo">
+       <c:if test="${jvo.state==1}">
+       <tr align="center">
+         <td> ${jvo.userid} </td>
+         <td> ${jvo.name} </td>
+         <td> ${jvo.zip} </td>
+         <td> ${jvo.juso} ${jvo.juso_etc} </td>
+         <td> ${jvo.phone} </td>
+         <td> </td>
+         <td> </td>
+       </tr>
+       </c:if>
+     </c:forEach>
+     </table>
+     
  
      <div align="center">
        <span id="edit" onclick="location='juso_edit'"> 배송지목록 등록 </span>
+       
        <span id="edit" onclick="location='member_view'"> 이전 페이지 </span>
      </div>
    </section>

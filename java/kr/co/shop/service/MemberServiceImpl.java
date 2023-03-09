@@ -357,4 +357,22 @@ public class MemberServiceImpl implements MemberService {
 		
 		return "redirect:/member/juso_list";
 	}
+
+	@Override
+	public String juso_gibon(HttpServletRequest request) {
+		
+		String id=request.getParameter("id");
+		membermapper.juso_gibon(id);
+		
+		return "redirect:/member/juso_list";
+	}
+
+	@Override
+	public String juso_gibonoff(HttpServletRequest request) {
+		
+		String id=request.getParameter("id");
+		membermapper.juso_gibonoff(id);
+		
+		return "redirect:/member/juso_list";
+	}
 }

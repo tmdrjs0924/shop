@@ -72,7 +72,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (69,'p040102843',1,'admin','2023-03-06','S'),(70,'p040102842',1,'admin','2023-03-06','S'),(71,'p040102841',1,'admin','2023-03-06','S'),(72,'p040102840',1,'admin','2023-03-06','S'),(73,'p030802836',1,'admin','2023-03-06','OneSize'),(74,'p030802837',1,'admin','2023-03-06','OneSize'),(75,'p040102838',1,'admin','2023-03-06','S'),(76,'p040102839',1,'admin','2023-03-06','S'),(77,'p030502835',1,'admin','2023-03-06','OneSize'),(78,'p030401834',1,'admin','2023-03-06','S');
+INSERT INTO `cart` VALUES (69,'p040102843',1,'admin','2023-03-06','S'),(70,'p040102842',1,'admin','2023-03-06','S'),(71,'p040102841',1,'admin','2023-03-06','S');
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +168,7 @@ CREATE TABLE `counsel` (
   `answer` text DEFAULT NULL,
   `writeday` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `counsel` (
 
 LOCK TABLES `counsel` WRITE;
 /*!40000 ALTER TABLE `counsel` DISABLE KEYS */;
-INSERT INTO `counsel` VALUES (10,'admin','ㅎㅎㅎㅎㅎ',1,'ㅎㅎㅎㅎㅎㅎㅎㅎㅎ?','2023-03-08'),(11,'admin','ㅎㅎㅎㅎㅎㅋㅋㅋ',1,'오늘은 수요일','2023-03-08'),(12,'admin','ㅠㅠ',1,'ㅋㅋ','2023-03-08'),(13,'admin','ㄹㄹ',1,'ㅎㅎ','2023-03-08'),(14,'admin','ㅎㅎ',1,'ㄹㄹ','2023-03-08'),(15,'admin','ㅋ',0,NULL,'2023-03-08'),(16,'admin','ㄹㄹㄹ',0,NULL,'2023-03-08'),(17,'admin','ggggggggg',0,NULL,'2023-03-08'),(18,'ksg','zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',0,NULL,'2023-03-08');
+INSERT INTO `counsel` VALUES (10,'admin','ㅎㅎㅎㅎㅎ',1,'ㅎㅎㅎㅎㅎㅎㅎㅎㅎ?','2023-03-08'),(11,'admin','ㅎㅎㅎㅎㅎㅋㅋㅋ',1,'오늘은 수요일','2023-03-08'),(12,'admin','ㅠㅠ',1,'ㅋㅋ','2023-03-08'),(13,'admin','ㄹㄹ',1,'ㅎㅎ','2023-03-08'),(14,'admin','ㅎㅎ',1,'ㄹㄹ','2023-03-08'),(15,'admin','ㅋ',0,NULL,'2023-03-08'),(16,'admin','ㄹㄹㄹ',0,NULL,'2023-03-08'),(17,'admin','ggggggggg',0,NULL,'2023-03-08'),(18,'ksg','zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',0,NULL,'2023-03-08'),(19,'ksg','0309 ggg',0,NULL,'2023-03-09'),(20,'ksg','ㅁㄴㅇㄹㄴㅁㅇㄹ',0,NULL,'2023-03-09');
 /*!40000 ALTER TABLE `counsel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,6 +195,7 @@ CREATE TABLE `juso` (
   `zip` varchar(30) DEFAULT NULL,
   `juso` varchar(200) DEFAULT NULL,
   `juso_etc` varchar(200) DEFAULT NULL,
+  `state` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -278,8 +279,9 @@ CREATE TABLE `order1` (
   `orderPaySelection3` int(11) DEFAULT NULL,
   `orderPayInstallment2` char(20) DEFAULT NULL,
   `orderPayInstallment3` char(20) DEFAULT NULL,
+  `orderState` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +290,7 @@ CREATE TABLE `order1` (
 
 LOCK TABLES `order1` WRITE;
 /*!40000 ALTER TABLE `order1` DISABLE KEYS */;
+INSERT INTO `order1` VALUES (1,'202303090001','ksg','p040701921,p040701921','180,190','2,2',0,'1',0,2,'3',11096,554800,4,5000,0,0,559800,'2023-03-09','',1,1,'','',0),(2,'202303090002','ksg','p010604222','OneSize','4',0,'1',0,1,'1',11628,581400,4,0,0,0,581400,'2023-03-09','',1,1,'','',0),(3,'202303090003','ksg','p010401073,p010401073','XL,L','1,4',0,'1',2,1,'1',18640,932000,5,0,0,0,932000,'2023-03-09','',1,3,'','11',0);
 /*!40000 ALTER TABLE `order1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,4 +367,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-08 17:23:04
+-- Dump completed on 2023-03-09 17:38:35

@@ -161,7 +161,7 @@
      <form method="post" action="login_ok">
       
        <h2> 로그인 </h2>
-       <div> <input type="text" name="userid" placeholder="아이디" value="admin"> </div>
+       <div> <input type="text" name="userid" placeholder="아이디" value="ksg"> </div>
        <div> <input type="password" name="pwd" placeholder="비밀번호" value="123"> </div>
        <div> <input type="submit" value="로그인"> </div>
       <c:if test="${chk == 1}">

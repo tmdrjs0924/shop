@@ -300,18 +300,43 @@ public class AdminServiceImpl implements AdminService {
 		return "/admin/border";
 	}
 
-	//게시판목록
+	//게시글목록
 	@Override
-	public String boardList(Model model) {
-		model.addAttribute("blist", mapper.boardList());
+	public String boardList(Model model, Criteria cri) {
+		model.addAttribute("blist", mapper.boardList(cri));
+		model.addAttribute("pageMaker",	new PageDTO(cri, mapper.boardTotal(cri)));
 		return "/admin/boardList";
 	}
 		
-	//게시판 답변
+	//게시글 답변
 	@Override
 	public String boardAction(BoardVo bvo) {
 		mapper.boardAction(bvo);
 		return "redirect:/admin/boardList";
+	}
+	
+	//게시글삭제
+	@Override
+	public String boardDelete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		mapper.boardDelete(id);
+		return "redirect:/admin/boardList";
+	}
+	
+	//1대1문의 목록
+	@Override
+	public String counselList(Model model, Criteria cri) {
+		model.addAttribute("clist", mapper.counselList(cri));
+		model.addAttribute("pageMaker",	new PageDTO(cri, mapper.counselTotal(cri)));
+		return "/admin/counselList";
+	}
+	
+	//1대1 삭제
+	@Override
+	public String counselDelete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		mapper.counselDelete(id);
+		return "redirect:/admin/counselList";
 	}
 	
 		

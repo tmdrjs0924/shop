@@ -60,9 +60,18 @@ public interface AdminService {
 	//게시판 관리
 	public String board(Model model);
 	
-	//게시판 목록
-	public String boardList(Model model);
+	//게시글 목록
+	public String boardList(Model model, Criteria cri);
 	
-	//게시판 답변
+	//게시글 답변
 	public String boardAction(BoardVo bvo);
+	
+	//게시글 삭제
+	public String boardDelete(HttpServletRequest request);
+	
+	//1대1문의 목록
+	public String counselList(Model model, Criteria cri);
+	
+	//1대1 삭제
+	public String counselDelete(HttpServletRequest request);
 }

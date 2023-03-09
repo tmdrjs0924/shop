@@ -298,6 +298,18 @@ body {
 </style>
 
 <script>
+	$(function(){
+		// 스크롤 위치를 세션 스토리지에 저장
+		window.addEventListener('scroll', function() {
+		  sessionStorage.setItem('scrollPosition', window.scrollY);
+		});
+		// 세션 스토리지에 저장된 스크롤 위치를 불러옴
+		var scrollPosition = sessionStorage.getItem('scrollPosition');
+		// 스크롤 위치를 조정
+		if (scrollPosition !== null) {
+		  window.scrollTo(0, scrollPosition);
+		}
+	});
 	let imsi = 0;
 	function redirect(size) {
 		if(size == 0) return;
@@ -305,8 +317,7 @@ body {
 		imsi++;
 		let selectProduct = document.getElementById("selectProduct");
 		selectProduct.innerHTML = selectProduct.innerHTML+ 
-			"<input type='hidden' name='total_code' value='${pvo.pCode}'>"+
-			"<div class='basket__product'><div class='basket__product__chk'><input type='checkbox' name='buy' value='260' checked='' onclick='javascript:basket.checkItem();'></div><div class='basket__product__title'>"+
+			"<div class='basket__product'><div class='basket__product__chk'><input type='hidden' name='total_code' value='${pvo.pCode}'><input type='checkbox' name='buy' value='260' checked='' onclick='javascript:basket.checkItem();'></div><div class='basket__product__title'>"+
 			"<input type='hidden' name='total_size' value='"+
 			size +
 			"'>"+
@@ -488,7 +499,7 @@ body {
 				</c:forEach>
 			</select>
 		</div>
-		
+
 		<!-- 상품 옵션추가 -->
 		<form name="orderform" id="orderform" method="post" class="orderform" action="../order/order"  onsubmit="return optionCheck()">
 		<input type='hidden' name='pCode' value='${pvo.pCode}'>

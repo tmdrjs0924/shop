@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 
 import kr.co.shop.vo.CounselVo;
 
-public interface CounselService {
+public interface MypageService {
 	public void counsel_input(HttpSession session, CounselVo cvo, PrintWriter out, Model model);
-	public String counsel_list(Model model, HttpServletRequest request);
-	public String counsel_update(CounselVo cvo);
+	public String order_history(HttpSession session, Model model);
+	public String state_change(HttpServletRequest request);
 }
