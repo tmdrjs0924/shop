@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.shop.mapper.MypageMapper">
+	<insert id="counsel_input">
+		insert into counsel(userid,content,state,writeday) values(#{userid},#{content},0,now())
+	</insert>
+	
+	<select id="orderInfo" resultType="kr.co.shop.vo.OrderVo">
+		select id, orderNumber, orderState, orderDate, orderTotalPrice, orderAmount, orderSize, orderCode from order1 where orderUserid=#{param} order by id desc
+	</select>
+	
+	<select id="pInfo" resultType="kr.co.shop.vo.OrderVo">
+		select pName, pImg1, pPrice, pDc, pDelivery, pMile from product where pCode=#{param} order by id desc
+	</select>
+	
+	<select id="orderInfo2" resultType="kr.co.shop.vo.OrderVo">
+		select id, orderNumber, orderState, orderDate, orderTotalPrice, orderAmount, orderSize, orderCode from order1 where orderNumber=#{param1} orderUserid=#{param2} order by id desc
+	</select>
+
+	<update id="state_change">
+		update order1 set orderState=#{param1} where id=#{param2}
+	</update>
+</mapper>
+ 

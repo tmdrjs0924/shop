@@ -1,0 +1,21 @@
+- 주문번호 orderNumber / 주문상태 orderState
+
+이미지 pImg1
+상품명 pName
+수량/사이즈 orderAmount/orderSize
+원가/할인가 pPrice/pPrice-pPrice*pDc/100
+
+- 배송지정보
+받는사람 orderName
+연락처 orderPhone
+주소 orderAdd
+메모 orderMessage(1일때) / orderMessage2(4일때)
+
+- 최초주문금액
+상품금액  (총 원가)
+배송비 orderTotalDelivery
+할인금액 
+
+- 결제상세
+결제금액 orderTotalPrice
+결제수단 orderPayType orderPaySelection orderPayInstallment 
