@@ -229,8 +229,6 @@ CREATE TABLE `member` (
   `phone` varchar(30) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
   `state` int(11) DEFAULT 0,
-  `juk` int(11) DEFAULT NULL,
-  `money` int(11) DEFAULT NULL,
   `point` int(11) DEFAULT NULL,
   `adminCk` int(11) DEFAULT NULL,
   `writeday` date DEFAULT NULL,
@@ -245,7 +243,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (10,'admin','ksg123','$2a$10$iTSEDSoCWUJfr4oFcXCa0uQtYS4piHoYjmTacPQbYGsf9IPanGD1q','12345','서울','12','010123123','123@nate.com',0,NULL,100000,5000,1,'2023-02-22',NULL),(11,'ksg','ksg','$2a$10$aChFzzAG/XpMfRZsPnNDpuaae7Qf7jn0JVZ9XCZNjJawmI/sSPkjG','13544','경기 성남시 분당구 용인서울고속도로 88','1','1','tmdrjs0924@naver.com',0,NULL,100000,5000,NULL,'2023-02-23',NULL),(12,'ksg2','11','$2a$10$zlp7d8mi56O9.mRBFjTfMOK7F5MQKtugEuV1AFfZoicLOFULwPE.i','12417','경기 가평군 가평읍 광장로22번길 27-9','','1','tmdrjs0924@naver.com',1,NULL,100000,5000,NULL,'2023-02-23',NULL);
+INSERT INTO `member` VALUES (10,'admin','ksg123','$2a$10$iTSEDSoCWUJfr4oFcXCa0uQtYS4piHoYjmTacPQbYGsf9IPanGD1q','12345','서울','12','010123123','123@nate.com',0,5000,1,'2023-02-22',NULL),(11,'ksg','ksg','$2a$10$aChFzzAG/XpMfRZsPnNDpuaae7Qf7jn0JVZ9XCZNjJawmI/sSPkjG','13544','경기 성남시 분당구 용인서울고속도로 88','1','1','tmdrjs0924@naver.com',0,5000,NULL,'2023-02-23',NULL),(12,'ksg2','11','$2a$10$zlp7d8mi56O9.mRBFjTfMOK7F5MQKtugEuV1AFfZoicLOFULwPE.i','12417','경기 가평군 가평읍 광장로22번길 27-9','','1','tmdrjs0924@naver.com',1,5000,NULL,'2023-02-23',NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,4 +370,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-10 16:53:21
+-- Dump completed on 2023-03-10 17:13:17
